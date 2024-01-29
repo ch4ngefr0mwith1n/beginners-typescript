@@ -9,10 +9,31 @@ interface LukeSkywalker {
   gender: string;
 }
 
-export const fetchLukeSkywalker = async (): LukeSkywalker => {
+// PRVO RJEŠENJE:
+export const fetchLukeSkywalker1 = async (): Promise<LukeSkywalker> => {
   const data = await fetch("https://swapi.dev/api/people/1").then((res) => {
     return res.json();
   });
 
   return data;
 };
+
+// DRUGO RJEŠENJE:
+export const fetchLukeSkywalker2 = async () => {
+  const data: LukeSkywalker = await fetch("https://swapi.dev/api/people/1").then((res) => {
+    return res.json();
+  });
+
+  return data;
+};
+
+// TREĆE RJEŠENJE:
+export const fetchLukeSkywalker3 = async () => {
+  const data = await fetch("https://swapi.dev/api/people/1").then((res) => {
+    return res.json();
+  });
+
+  return data as LukeSkywalker;
+};
+
+
